@@ -57,7 +57,7 @@ export default {
       /*
       axios返回的是promise对象，需要回调函数
       * */
-      axios.post("http://localhost:8080/register", form
+      axios.post("http://localhost:8081/register", form
       ).then(res => {
             window.localStorage.setItem("username", res.data.re_username);
             window.localStorage.setItem("password", res.data.re_password);
