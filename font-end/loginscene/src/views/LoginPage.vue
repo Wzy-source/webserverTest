@@ -23,7 +23,6 @@ import axios from "axios";
 import qs from "qs";
 
 axios.defaults.withCredentials = true;
-
 export default {
   data() {
     return {
@@ -54,7 +53,7 @@ export default {
         "name": this.name,
         "password": this.password
       });
-      axios.post("http://localhost:8080/login", form
+      axios.post("http://localhost:8084/login", form
       ).then(res => {
             window.localStorage.setItem("username", res.data.re_username);
             window.localStorage.setItem("password", res.data.re_password);
