@@ -64,9 +64,9 @@ public class Service {
         response.setLocation(request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
 
         //添加的跨域处理
-        response.addBodyContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
-        response.addBodyContent("Access-Control-Allow-Credentials","true");
-        response.addBodyContent("Access-Control-Allow-Headers","Content-Type,Location");
+        response.addHeadContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+        response.addHeadContent("Access-Control-Allow-Credentials","true");
+        response.addHeadContent("Access-Control-Allow-Headers","Content-Type,Location");
 
 
         response.addBodyContent("message","URL Moved Temporarily");
@@ -77,9 +77,9 @@ public class Service {
         response.setLocation(request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
 
         //添加的跨域处理
-        response.addBodyContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
-        response.addBodyContent("Access-Control-Allow-Credentials","true");
-        response.addBodyContent("Access-Control-Allow-Headers","Content-Type,Location");
+        response.addHeadContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+        response.addHeadContent("Access-Control-Allow-Credentials","true");
+        response.addHeadContent("Access-Control-Allow-Headers","Content-Type,Location");
 
 
         response.addBodyContent("message","URL Moved Permanently");
