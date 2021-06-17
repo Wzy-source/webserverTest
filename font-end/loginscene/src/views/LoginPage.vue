@@ -53,7 +53,10 @@ export default {
         "name": this.name,
         "password": this.password
       });
-      axios.post("http://localhost:8081/login", form
+      axios.post("http://localhost:8081/login", form,
+          {
+            withCredentials: true
+          }
       ).then(res => {
             window.localStorage.setItem("username", res.data.re_username);
             window.localStorage.setItem("password", res.data.re_password);
