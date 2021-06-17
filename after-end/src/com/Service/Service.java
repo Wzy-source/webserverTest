@@ -62,12 +62,26 @@ public class Service {
     private void process302(){
         response.setState(302);
         response.setLocation(request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+
+        //添加的跨域处理
+        response.addHeadContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+        response.addHeadContent("Access-Control-Allow-Credentials","true");
+        response.addHeadContent("Access-Control-Allow-Headers","Content-Type,Location");
+
+
         response.addBodyContent("message","URL Moved Temporarily");
     }
 
     private void process301(){
         response.setState(301);
         response.setLocation(request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+
+        //添加的跨域处理
+        response.addHeadContent("Access-Control-Allow-Origin","http://"+Server.ServerIP+request.getRequestURL().substring(0,request.getRequestURL().indexOf("_")));
+        response.addHeadContent("Access-Control-Allow-Credentials","true");
+        response.addHeadContent("Access-Control-Allow-Headers","Content-Type,Location");
+
+
         response.addBodyContent("message","URL Moved Permanently");
     }
 
