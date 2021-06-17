@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PropertiesUtil {
 
-    private static final String FILE_NAME="D:\\Coding_SoftWare\\JetBrains\\IdeaProject\\Test\\after-end\\src\\com\\File\\User";
+    private static final String FILE_NAME="D:\\桌面\\Test\\after-end\\src\\com\\File\\User";
 
     private static Scanner sc;
 

@@ -18,14 +18,14 @@ public class Server{
     //表示该服务器是否正在运行
     public static boolean isRunning=true;
 
-    public static final String ServerIP="localhost:8084";
+    public static final String ServerIP="localhost:8080";
 
     //服务器缓存
     public static Map<String,String> memory;
 
     public static void main(String[]args) throws IOException {
         //创建服务器
-        ServerSocket server=new ServerSocket(8084);
+        ServerSocket server=new ServerSocket(8080);
 
         //创建缓存
         memory=new HashMap<>();
