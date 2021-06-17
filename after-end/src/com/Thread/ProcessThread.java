@@ -32,6 +32,9 @@ public class ProcessThread implements Runnable{
             //更改响应报文响应体的格式
             // response.setContentType(ContentType.JSON);
 
+            //跨域处理
+            response.addHeadContent("Access-Control-Allow-Origin","http://localhost:8080");
+
             //生成响应报文
             response.generateResponse();
         } catch (IOException e) {
