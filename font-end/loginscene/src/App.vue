@@ -11,12 +11,12 @@
       <div class="InContents">
         <div class="indexContainer">
           <div class="routerLink">
-            <router-link @click.native="isLogin" v-bind:class="[isLoginPage? 'activePage' : 'unActivePage']" to="/">
+            <router-link @click.native="isLogin" v-bind:class="[isLoginPage? 'activePage' : 'unActivePage']" to="/login">
               Login
             </router-link>
             <span class="separator"> / </span>
             <router-link @click.native="isSignUp" v-bind:class="[isLoginPage? 'unActivePage' : 'activePage']"
-                         to="/SignUpPage">Sign Up
+                         to="/register">Sign Up
             </router-link>
           </div>
           <router-view class="view"></router-view>

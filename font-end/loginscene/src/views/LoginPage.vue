@@ -2,7 +2,7 @@
   <form action="#">
     <div class="field">
       <span class="fa fa-user"></span>
-      <input type="text" required placeholder="Phone or Email" v-model="username">
+      <input type="text" required placeholder="Phone or Email" v-model="name">
     </div>
     <div class="field key"><!--这就是html中的属性继承，会继承field中的所有属性，并且可以通过.space为其增加属性-->
       <span class="fa fa-key"></span>
@@ -10,7 +10,7 @@
       <span class="show" @click="hideOrShow">{{ message }}</span>
     </div>
     <div class="forget">
-      <a href="" >Forget Password?</a>
+      <a href="">Forget Password?</a>
     </div>
     <div class="login">
       <input type="submit" value="Login" @click="sendInfo">
@@ -20,16 +20,20 @@
 
 <script>
 import axios from "axios";
+import qs from "qs";
+
+axios.defaults.withCredentials = true;
+
 export default {
   data() {
     return {
       isHide: true,
       message: "Hide",
       front: true,
-      username: "",
+      name: "",
       password: "",
       re_username: "",
-      re_password:"",
+      re_password: "",
       re_StatusCode: ""
 
     }
@@ -45,26 +49,22 @@ export default {
     },
     sendInfo() {
       // console.log(this.username);
-
-      axios.post("/",
-        {
-          "username": this.username,
-          "password": this.password
-        }
-      ).then(res=>
-          {
+      /*使用qs，将参数转换为query参数*/
+      let form = qs.stringify({
+        "name": this.name,
+        "password": this.password
+      });
+      axios.post("http://localhost:8080/login", form
+      ).then(res => {
             window.localStorage.setItem("username", res.data.re_username);
             window.localStorage.setItem("password", res.data.re_password);
             window.localStorage.setItem("statusCode", res.data.re_StatusCode);
           }
-
       );
     }
   }
 }
 </script>
-
-
 
 
 <style>
@@ -153,7 +153,6 @@ export default {
 
 
 </style>
-
 
 
 <!--

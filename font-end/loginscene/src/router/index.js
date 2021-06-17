@@ -8,12 +8,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'LoginPage',
       component: LoginPage
     },
     {
-      path: '/SignUpPage',
+      path: '/register',
       name: 'SignUpPage',
       component: SignUpPage
     }

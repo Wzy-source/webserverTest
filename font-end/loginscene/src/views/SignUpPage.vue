@@ -3,8 +3,8 @@
   <form action="#">
     <div class="field">
       <span class="fa fa-user"></span>
-<!--      -->
-      <input type="text" required placeholder="username" v-model="username">
+      <!--      -->
+      <input type="text" required placeholder="username" v-model="name">
     </div>
     <div class="field key"><!--这就是html中的属性继承，会继承field中的所有属性，并且可以通过.space为其增加属性-->
       <span class="fa fa-key"></span>
@@ -22,16 +22,20 @@
 
 <script>
 import axios from "axios";
+import qs from "qs";
+
+axios.defaults.withCredentials = true;
+
 export default {
   data() {
     return {
       isHide: true,
       message: "Hide",
       front: true,
-      username: "",
-      password:"",
+      name: "",
+      password: "",
       re_username: "",
-      re_password:"",
+      re_password: "",
       re_StatusCode: ""
     }
   },
@@ -45,14 +49,16 @@ export default {
       }
     },
     sendInfo() {
+      let form = qs.stringify(
+          {
+            "name": this.name,
+            "password": this.password
+          });
       /*
       axios返回的是promise对象，需要回调函数
       * */
-      axios.post("/SignUpPage", {
-        "username": this.username,
-        "password": this.password
-      }).then(res =>
-          {
+      axios.post("http://localhost:8080/register", form
+      ).then(res => {
             window.localStorage.setItem("username", res.data.re_username);
             window.localStorage.setItem("password", res.data.re_password);
             window.localStorage.setItem("statusCode", res.data.re_StatusCode);
@@ -62,8 +68,6 @@ export default {
   }
 }
 </script>
-
-
 
 
 <style>
@@ -144,7 +148,6 @@ export default {
   left: 5px;
   color: transparent;
 }
-
 
 
 </style>
