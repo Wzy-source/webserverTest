@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class PropertiesUtil {
 
-    private static final String FILE_NAME="/Users/mac/Desktop/学业/大二下/互联网计算/大作业/socket/Test/after-end/src/com/File/User";
-
+    private static final String FILE_NAME="D:\\桌面\\webserverTest\\after-end\\src\\com\\File\\User";
     private static Scanner sc;
 
     private static PrintWriter writer;
