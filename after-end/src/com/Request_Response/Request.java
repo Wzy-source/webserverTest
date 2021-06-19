@@ -26,6 +26,8 @@ public class Request {
         //获取请求报文的所有内容
         String s=new String(data,0,len);
 
+        System.out.println("Request为");
+        System.out.println(s);
         //对请求报文进行划分
         all=s.split("\r\n");
 

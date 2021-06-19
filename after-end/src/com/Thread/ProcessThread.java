@@ -33,7 +33,7 @@ public class ProcessThread implements Runnable{
             // response.setContentType(ContentType.JSON);
 
             //跨域处理
-            response.addHeadContent("Access-Control-Allow-Origin","*");
+            response.addHeadContent("Access-Control-Allow-Origin",request.getHeaderParam("Origin"));
             response.addHeadContent("Access-Control-Allow-Methods","GET,POST");
             response.addHeadContent("Access-Control-Allow-Headers","*");
             response.addHeadContent("Access-Control-Allow-Credentials","true");
