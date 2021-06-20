@@ -62,9 +62,8 @@ export default {
             withCredentials: true
           }
       ).then(res => {
-            window.localStorage.setItem("username", res.data.re_username);
-            window.localStorage.setItem("password", res.data.re_password);
-            window.localStorage.setItem("statusCode", res.data.re_StatusCode);
+        console.log(res);
+        this.$emit("func", res);
           }
       );
     }

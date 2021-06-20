@@ -2,17 +2,28 @@
 
   <form action="#">
     <div class="field">
-      <span class="fa fa-user"></span>
-      <input type="text" v-bind:value="re_username"  readonly="readonly" placeholder="username">
+      <span class="fa fa-database"></span>
+      <input type="text" v-bind:value="res.data"  readonly="readonly" placeholder="data">
     </div>
     <div class="field key"><!--这就是html中的属性继承，会继承field中的所有属性，并且可以通过.space为其增加属性-->
-      <span class="fa fa-key"></span>
-      <input :type="[isHide?'text':'password']" class="pass-key" v-bind:value="re_password"  readonly="readonly" placeholder="password">
-      <span class="show" @click="hideOrShow">{{ message }}</span>
+      <span class="fa fa-header"></span>
+      <input :type="[isHide?'text':'password']" class="pass-key" v-bind:value="res.headers.contentType+res.headers.contentLength"  readonly="readonly" placeholder="Headers">
     </div>
     <div class="field code">
       <span class="fa fa-code"></span>
-      <input type="text" v-bind:value="re_StatusCode"  readonly="readonly" placeholder="Status code">
+      <input type="text" v-bind:value="res.statusCode"  readonly="readonly" placeholder="Status code">
+    </div>
+    <div class="field code">
+      <span class="fa fa-file-text-o"></span>
+      <input type="text" v-bind:value="res.statusText"  readonly="readonly" placeholder="Status Text">
+    </div>
+    <div class="field code">
+      <span class="fa fa-exchange"></span>
+      <input type="text" v-bind:value="res.method"  readonly="readonly" placeholder="method">
+    </div>
+    <div class="field code">
+      <span class="fa fa-link"></span>
+      <input type="text" v-bind:value="res.url"  readonly="readonly" placeholder="url">
     </div>
     <div class="forget">.</div>
 
@@ -24,16 +35,33 @@
 
 export default {
   name: 'MessageInfo',
+
   data() {
     return {
       isHide: true,
       message: "Hide",
       front: true,
-      re_username: window.localStorage.getItem("username"),
-      re_password: window.localStorage.getItem("password"),
-      re_StatusCode: window.localStorage.getItem("statusCode")
     };
   },
+  props:{
+    res:{
+      type: Object,
+      default(){
+        return {
+          data: "",
+          headers: {
+            contentType: "",
+            contentLength:""
+          },
+          statusCode: "",
+          statusText: "",
+          method: "",
+          url:""
+        };
+      }
+    }
+  },
+
   methods: {
     hideOrShow() {
       this.isHide = !this.isHide;

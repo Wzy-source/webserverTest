@@ -11,7 +11,8 @@
       <div class="InContents">
         <div class="indexContainer">
           <div class="routerLink">
-            <router-link @click.native="isLogin" v-bind:class="[isLoginPage? 'activePage' : 'unActivePage']" to="/login">
+            <router-link @click.native="isLogin" v-bind:class="[isLoginPage? 'activePage' : 'unActivePage']"
+                         to="/login">
               Login
             </router-link>
             <span class="separator"> / </span>
@@ -19,16 +20,16 @@
                          to="/register">Sign Up
             </router-link>
           </div>
-          <router-view class="view"></router-view>
+          <router-view class="view" @func="func"></router-view>
         </div>
       </div>
       <div class="OutContents">
         <div class="indexContainer">
           <div class="message">
-            Response Data
+            Response
           </div>
           <div>
-            <MessageInfo></MessageInfo>
+            <MessageInfo v-bind:res="res"></MessageInfo>
           </div>
         </div>
       </div>
@@ -42,23 +43,42 @@
 <script>
 /*错因：文件目录写错导致找不到具体文件*/
 import MessageInfo from "../src/components/MessageInfo"
+
 export default {
-  components:{
+  components: {
     MessageInfo
   },
   data() {
     return {
-      isLoginPage: true
+      isLoginPage: true,
+      res: {
+        data: "",
+        headers: {
+          contentType: "",
+          contentLength: ""
+        },
+        statusCode: "",
+        statusText: "",
+        method:"",
+        url:""
+      }
     }
   },
   methods: {
     isLogin() {
       this.isLoginPage = true;
-      console.log(this.isLoginPage)
     },
     isSignUp() {
       this.isLoginPage = false;
-      console.log(this.isLoginPage)
+    },
+    func(res) {
+      this.res.data = res.data.replaceAll('"','');
+      this.res.statusCode = "status:" + res.status;
+      this.res.statusText = "status-text:"+res.statusText;
+      this.res.headers.contentType = "content-type:" + res.headers['content-type']+"   ";
+      this.res.headers.contentLength = "content-length:" + res.headers['content-length'];
+      this.res.method = "method:" + res.config.method;
+      this.res.url = "request-url:" + res.config.url;
     }
   }
 }
@@ -102,7 +122,7 @@ export default {
 
 }
 
-.OutContents{
+.OutContents {
   position: absolute;
   top: 50%;
   left: 70%;
@@ -135,7 +155,7 @@ export default {
   margin: 0 0 35px 0; /*上右下左，*/
 }
 
-.indexContainer .message{
+.indexContainer .message {
   color: burlywood; /*#e6d8d8 bisque*/
   font-size: 30px;
   font-weight: 600;

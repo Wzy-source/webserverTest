@@ -2,11 +2,11 @@
   <form action="#">
     <div class="field">
       <span class="fa fa-user"></span>
-      <input type="text" required placeholder="Phone or Email" v-model="name">
+      <input type="text" required placeholder="username" v-model="name">
     </div>
     <div class="field key"><!--这就是html中的属性继承，会继承field中的所有属性，并且可以通过.space为其增加属性-->
       <span class="fa fa-key"></span>
-      <input :type="[isHide?'text':'password']" class="pass-key" required placeholder="Password" v-model="password">
+      <input :type="[isHide?'text':'password']" class="pass-key" required placeholder="password" v-model="password">
       <span class="show" @click="hideOrShow">{{ message }}</span>
     </div>
     <div class="forget">
@@ -31,12 +31,10 @@ export default {
       front: true,
       name: "",
       password: "",
-      re_username: "",
-      re_password: "",
-      re_StatusCode: ""
-
     }
   },
+
+
   methods: {
     hideOrShow() {
       this.isHide = !this.isHide;
@@ -58,9 +56,8 @@ export default {
             withCredentials: true
           }
       ).then(res => {
-            window.localStorage.setItem("username", res.data.re_username);
-            window.localStorage.setItem("password", res.data.re_password);
-            window.localStorage.setItem("statusCode", res.data.re_StatusCode);
+            console.log(res);
+            this.$emit("func", res);
           }
       );
     }
