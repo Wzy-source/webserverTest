@@ -29,6 +29,8 @@ public class ProcessThread implements Runnable{
             Service service=new Service(request,response);
             service.processAll();
 
+            response.addHeadContent("Connection","keep-alive");
+
             //更改响应报文响应体的格式
             // response.setContentType(ContentType.JSON);
 

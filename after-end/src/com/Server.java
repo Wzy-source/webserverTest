@@ -31,15 +31,15 @@ public class Server{
         memory=new HashMap<>();
 
         //开启缓存清除线程
-        new Thread(new ClearThread()).start();
+        //new Thread(new ClearThread()).start();
 
         //开启监听线程
-        new Thread(new ListenThread()).start();
+        //new Thread(new ListenThread()).start();
 
 
         //创建线程池用于执行请求处理任务
         ThreadPoolExecutor executor=new ThreadPoolExecutor
-                (10,15,100, TimeUnit.SECONDS,new ArrayBlockingQueue<>(5));
+                (20,30,100, TimeUnit.SECONDS,new ArrayBlockingQueue<>(5));
 
         while(true){
             //阻塞等待请求

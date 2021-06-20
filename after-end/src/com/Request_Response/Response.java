@@ -65,9 +65,9 @@ public class Response {
 
     //在响应头中添加Location字段
     public void setLocation(String newURL){
-        StringBuilder url=new StringBuilder();
-        url.append("http://").append(Server.ServerIP).append(newURL);
-        this.addHeadContent("Location",url.toString());
+        //StringBuilder url=new StringBuilder();
+        //url.append("http://").append(Server.ServerIP).append(newURL);
+        this.addHeadContent("Location",newURL);
     }
 
 

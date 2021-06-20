@@ -51,7 +51,7 @@ export default {
         "name": this.name,
         "password": this.password
       });
-      axios.post("http://localhost:8081/login", form,
+      axios.post("http://localhost:8081/login_other", form,
           {
             withCredentials: true
           }
